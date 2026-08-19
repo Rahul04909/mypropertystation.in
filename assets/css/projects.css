@@ -1,0 +1,250 @@
+/* assets/css/projects.css */
+
+.projects-section {
+    position: relative;
+    padding: var(--section-padding-large);
+    background-color: var(--color-bg-dark);
+    border-top: 1px solid var(--color-border-dark);
+    overflow: hidden;
+    z-index: 5;
+}
+
+/* Background outline text */
+.projects-bg-text {
+    top: 50%;
+    left: 20%;
+    transform: translateY(-50%);
+    font-size: 14vw;
+    line-height: 1;
+    z-index: 1;
+}
+
+.projects-container-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+.projects-layout-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* Left Pane: Indicators & Info Text */
+.projects-info-pane {
+    display: flex;
+    gap: 2.5rem;
+    align-items: stretch;
+}
+
+.projects-index-indicator {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60px;
+    flex-shrink: 0;
+}
+
+.index-line-track {
+    width: 1px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.05), var(--color-accent), rgba(0,0,0,0.05));
+    flex-grow: 1;
+}
+
+.index-number-bubble {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: var(--color-bg-dark);
+    border: 2px solid var(--color-accent);
+    color: var(--color-text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(225, 177, 90, 0.2);
+    transition: var(--transition-normal);
+}
+
+.projects-text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.projects-desc {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 420px;
+}
+
+/* Right Pane: Slides & Carousel Grid */
+.projects-showcase-pane {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    overflow: hidden;
+}
+
+.projects-slider-wrapper {
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    width: max-content;
+}
+
+.project-slide {
+    width: 280px;
+    flex-shrink: 0;
+    opacity: 0.6;
+    transform: scale(0.95);
+    transition: var(--transition-slow);
+}
+
+.project-slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.project-card-image {
+    position: relative;
+    overflow: hidden;
+    height: 380px;
+    border-radius: 40px 0px 40px 40px; /* Custom cut corner */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.project-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-slow);
+}
+
+.project-slide:hover .project-card-image img {
+    transform: scale(1.05);
+}
+
+/* Bottom shadow gradient overlay */
+.project-card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2.5rem 2rem 2rem 2rem;
+    background: linear-gradient(to top, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0.4) 60%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.project-card-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #FFFFFF !important;
+    margin-bottom: 0.25rem;
+}
+
+.project-card-location {
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    font-weight: 500;
+}
+
+/* Floating Gold Circular Button */
+.project-card-btn {
+    position: absolute;
+    bottom: 1.75rem;
+    right: 1.75rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    color: var(--color-text-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-normal);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.project-card-btn i,
+.project-card-btn svg {
+    width: 18px;
+    height: 18px;
+    transition: var(--transition-normal);
+}
+
+.project-card-btn:hover {
+    background-color: var(--color-text-light);
+    color: var(--color-text-dark);
+    transform: scale(1.1);
+}
+
+.project-card-btn:hover i,
+.project-card-btn:hover svg {
+    transform: rotate(45deg);
+}
+
+/* Bottom Horizontal Navigation Line Indicators */
+.projects-slider-nav {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    padding-left: 0.5rem;
+}
+
+.slide-nav-dot {
+    width: 25px;
+    height: 3px;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: var(--transition-normal);
+}
+
+.slide-nav-dot.active {
+    width: 45px;
+    background-color: var(--color-accent);
+}
+
+/* Responsive Customisations */
+@media (max-width: 1024px) {
+    .projects-layout-grid {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+    }
+    .projects-info-pane {
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 600px) {
+    .projects-info-pane {
+        gap: 1.5rem;
+    }
+    
+    .project-slide {
+        width: 240px;
+    }
+    
+    .project-card-image {
+        height: 320px;
+    }
+    
+    .projects-index-indicator {
+        display: none; /* Hide index timeline on mobile screen sizes */
+    }
+}

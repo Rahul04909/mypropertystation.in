@@ -1,0 +1,178 @@
+/* assets/css/promo.css */
+
+.promo-section {
+    background-color: var(--color-bg-light);
+    padding: var(--section-padding-large);
+    position: relative;
+    z-index: 5;
+    border-top: 1px solid var(--color-border-light);
+}
+
+.tagline-dark {
+    color: var(--color-text-dark);
+    opacity: 0.8;
+}
+
+.text-dark {
+    color: var(--color-text-dark);
+}
+
+.promo-info-pane {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.promo-desc {
+    color: var(--color-text-muted-dark);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 500px;
+}
+
+.promo-action {
+    margin-bottom: 3.5rem;
+}
+
+.gold-arrow {
+    color: var(--color-accent);
+}
+
+/* CEO Profile card block */
+.ceo-profile-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 480px;
+}
+
+.ceo-avatar-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--color-bg-dark);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ceo-avatar-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ceo-meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.ceo-name {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+}
+
+.ceo-title {
+    font-size: 0.85rem;
+    color: var(--color-text-muted-dark);
+    font-weight: 500;
+}
+
+.ceo-signature-box {
+    margin-left: auto;
+    width: 110px;
+    height: 45px;
+    opacity: 0.85;
+}
+
+.signature-svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Right Visual Pane */
+.promo-visual-pane {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.promo-image-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 60px 0 60px 60px; /* Cut top-right */
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.promo-img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    transition: var(--transition-slow);
+}
+
+.promo-image-wrapper:hover .promo-img {
+    transform: scale(1.04);
+}
+
+/* Floating dark play button */
+.promo-play-btn {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: var(--transition-normal);
+    z-index: 5;
+}
+
+.promo-play-btn i,
+.promo-play-btn svg {
+    width: 20px;
+    height: 20px;
+    transform: translateX(1px); /* alignment centering */
+}
+
+.promo-play-btn:hover {
+    background-color: var(--color-accent);
+    color: var(--color-text-dark);
+    transform: scale(1.1);
+}
+
+/* Responsive Customisations */
+@media (max-width: 768px) {
+    .promo-action {
+        margin-bottom: 2.5rem;
+    }
+    
+    .ceo-profile-card {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .ceo-signature-box {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+    
+    .promo-img {
+        height: 320px;
+    }
+}

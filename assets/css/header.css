@@ -1,0 +1,274 @@
+/* assets/css/header.css */
+
+/* Main header wrapper styles */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: transparent;
+    padding: 1.5rem 0;
+    transition: var(--transition-normal);
+}
+
+/* Scroll state styling (adds glassmorphism blur and dark background on scroll) */
+.main-header.scrolled {
+    padding: 1rem 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo Design */
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-img {
+    height: 56px;
+    width: auto;
+    object-fit: contain;
+    transition: var(--transition-normal);
+}
+
+.main-header.scrolled .logo-img {
+    height: 46px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-title {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--color-text-light);
+    letter-spacing: 1.5px;
+}
+
+.logo-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    letter-spacing: 3.5px;
+}
+
+/* Desktop Navigation Menu */
+.desktop-nav {
+    display: block;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    gap: 2.25rem;
+}
+
+.nav-link {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-link:hover {
+    color: var(--color-text-light);
+}
+
+/* Expanding accent dot or line on hover */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: var(--transition-normal);
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Action Area with CTA button & burger toggle */
+.action-area {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.btn-header-cta {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.85rem;
+    border-radius: var(--border-radius-rect);
+}
+
+/* Burger Menu Toggle Button */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+.burger-bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-text-light);
+    transition: var(--transition-normal);
+    transform-origin: left center;
+}
+
+/* Burger Icon active transforms */
+.menu-toggle.active .bar-1 {
+    transform: rotate(45deg);
+}
+
+.menu-toggle.active .bar-2 {
+    opacity: 0;
+    width: 0;
+}
+
+.menu-toggle.active .bar-3 {
+    transform: rotate(-45deg);
+}
+
+/* Mobile Drawer Overlay */
+.drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(4px);
+    z-index: 998;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition-normal);
+}
+
+.drawer-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Mobile Drawer Navigation Styles */
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 320px;
+    height: 100%;
+    background-color: var(--color-bg-dark-card);
+    z-index: 999;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-drawer.active {
+    right: 0;
+}
+
+.drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+}
+
+.drawer-close {
+    font-size: 1.5rem;
+    color: var(--color-text-light);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: var(--transition-fast);
+}
+
+.drawer-close:hover {
+    background-color: var(--color-accent);
+    color: var(--color-text-dark);
+}
+
+.mobile-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.mobile-nav-link {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    display: block;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mobile-nav-link:hover {
+    color: var(--color-accent);
+    padding-left: 0.5rem;
+}
+
+.drawer-footer {
+    margin-top: auto;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+    .nav-list {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+
+    .btn-header-cta {
+        display: none; /* Hide listing button on mobile header, keep in mobile menu */
+    }
+    
+    .logo-title {
+        font-size: 1.1rem;
+    }
+}
