@@ -170,8 +170,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             width: 100%;
             padding: 0.85rem 1rem 0.85rem 2.75rem;
             background-color: #FFFFFF;
-            border: 1px solid var(--color-border-dark);
-            border-radius: 4px;
+            border: 1.5px solid #cbd5e1; /* Well-defined and visible border */
+            border-radius: 6px;
             color: var(--color-text-light);
             font-size: 0.95rem;
             transition: all 0.3s ease;
@@ -179,8 +179,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         .form-control:focus {
             border-color: var(--color-accent);
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 0 3.5px rgba(212, 175, 55, 0.15); /* Themed focus glow */
             outline: none;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--color-text-muted);
+            opacity: 0.7;
+            z-index: 10;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .toggle-password:hover {
+            color: var(--color-accent) !important;
+            opacity: 1 !important;
         }
 
         .btn-login {
@@ -241,7 +259,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="password" class="form-label">Password</label>
                     <div class="input-wrapper">
                         <span class="input-icon"><i class="fa-solid fa-lock"></i></span>
-                        <input type="password" id="password" name="password" required placeholder="Enter password" class="form-control" autocomplete="current-password">
+                        <input type="password" id="password" name="password" required placeholder="Enter password" class="form-control" autocomplete="current-password" style="padding-right: 2.75rem;">
+                        <span class="toggle-password" id="toggle-password-btn"><i class="fa-solid fa-eye"></i></span>
                     </div>
                 </div>
                 
@@ -255,6 +274,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <script>
     $(document).ready(function() {
+        // Toggle Password Visibility
+        $('#toggle-password-btn').on('click', function() {
+            var $input = $('#password');
+            var isPassword = $input.attr('type') === 'password';
+            $input.attr('type', isPassword ? 'text' : 'password');
+            $(this).find('i').toggleClass('fa-eye fa-eye-slash');
+        });
+
         $('#admin-login-form').on('submit', function(e) {
             e.preventDefault();
             
