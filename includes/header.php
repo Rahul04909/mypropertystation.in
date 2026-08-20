@@ -39,31 +39,22 @@ require_once __DIR__ . '/../config.php';
         <div class="container header-container">
             <!-- Logo Section -->
             <a href="index.php" class="logo-area" id="logo-link">
-                <span class="logo-text">
-                    <span class="logo-title"><?php 
-                        $appName = env('APP_NAME', 'Property Station');
-                        $words = explode(' ', $appName);
-                        echo htmlspecialchars(strtoupper($words[0] . (isset($words[1]) ? ' ' . $words[1] : '')));
-                    ?></span>
-                    <span class="logo-subtitle"><?php 
-                        echo htmlspecialchars(strtoupper(isset($words[2]) ? $words[2] : ''));
-                    ?></span>
-                </span>
+                <img src="assets/logo/logo.jpeg" alt="Property Station Logo" class="logo-img">
             </a>
 
             <!-- Navigation Links (Desktop) -->
             <nav class="desktop-nav" aria-label="Main Navigation">
                 <ul class="nav-list">
-                    <li><a href="#hero" class="nav-link">Home</a></li>
-                    <li><a href="#about" class="nav-link">About Us</a></li>
-                    <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#contact" class="nav-link">Contact Us</a></li>
+                    <li><a href="index.php" class="nav-link">Home</a></li>
+                    <li><a href="about.php" class="nav-link">About Us</a></li>
+                    <li><a href="index.php#projects" class="nav-link">Projects</a></li>
+                    <li><a href="contact.php" class="nav-link">Contact Us</a></li>
                 </ul>
             </nav>
 
             <!-- CTA & Burger Action Area -->
             <div class="action-area">
-                <a href="#contact" class="btn btn-primary btn-header-cta" id="btn-add-listing">
+                <a href="contact.php" class="btn btn-primary btn-header-cta" id="btn-add-listing">
                     Enquire Now <i data-lucide="arrow-right"></i>
                 </a>
                 
@@ -81,16 +72,7 @@ require_once __DIR__ . '/../config.php';
     <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
         <div class="drawer-header">
             <a href="index.php" class="logo-area">
-                <span class="logo-text">
-                    <span class="logo-title"><?php 
-                        $appName = env('APP_NAME', 'Property Station');
-                        $words = explode(' ', $appName);
-                        echo htmlspecialchars(strtoupper($words[0] . (isset($words[1]) ? ' ' . $words[1] : '')));
-                    ?></span>
-                    <span class="logo-subtitle"><?php 
-                        echo htmlspecialchars(strtoupper(isset($words[2]) ? $words[2] : ''));
-                    ?></span>
-                </span>
+                <img src="assets/logo/logo.jpeg" alt="Property Station Logo" class="logo-img">
             </a>
             <button class="drawer-close" id="drawer-close-btn" aria-label="Close Menu">
                 <i data-lucide="x"></i>
@@ -99,14 +81,14 @@ require_once __DIR__ . '/../config.php';
         <div class="drawer-body">
             <nav class="mobile-nav" aria-label="Mobile Navigation">
                 <ul class="mobile-nav-list">
-                    <li><a href="#hero" class="mobile-nav-link">Home</a></li>
-                    <li><a href="#about" class="mobile-nav-link">About Us</a></li>
-                    <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
-                    <li><a href="#contact" class="mobile-nav-link">Contact Us</a></li>
+                    <li><a href="index.php" class="mobile-nav-link">Home</a></li>
+                    <li><a href="about.php" class="mobile-nav-link">About Us</a></li>
+                    <li><a href="index.php#projects" class="mobile-nav-link">Projects</a></li>
+                    <li><a href="contact.php" class="mobile-nav-link">Contact Us</a></li>
                 </ul>
             </nav>
             <div class="drawer-footer">
-                <a href="#contact" class="btn btn-primary w-full" style="width: 100%;">Enquire Now <i data-lucide="arrow-right"></i></a>
+                <a href="contact.php" class="btn btn-primary w-full" style="width: 100%;">Enquire Now <i data-lucide="arrow-right"></i></a>
             </div>
         </div>
     </div>

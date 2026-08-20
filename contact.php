@@ -1,8 +1,17 @@
 <?php
 /**
- * Contact/Investment Inquiry Component for Property Station
+ * Standalone Contact Us Page
+ * Property Station
  */
 
+// 1. Load Central Config
+require_once __DIR__ . '/config.php';
+
+// 2. Set Meta Details for SEO
+$meta_title = "Contact Us | " . env('APP_NAME', 'Property Station') . " - Get In Touch";
+$meta_desc = "Get in touch with Property Station. Speak with our real estate brokers, smart investment analysts, or submit an investment inquiry online.";
+
+// 3. Fetch Active Projects for dropdown
 try {
     $db = db();
     $stmt = $db->query("SELECT `title` FROM `projects` ORDER BY `id` ASC");
@@ -14,22 +23,157 @@ try {
 if (empty($contactProjects)) {
     $contactProjects = ['Eco-Solar Villa', 'Cubic Glass Manor', 'Contemporary Mansion'];
 }
-?>
-<section class="contact-section" id="contact">
-    <!-- Huge background outline text -->
-    <div class="outline-text contact-bg-text">CONNECT</div>
 
+// 4. Load Header
+require_once __DIR__ . '/includes/header.php';
+?>
+
+<!-- Custom CSS for Subpage layout -->
+<style>
+.subpage-hero {
+    position: relative;
+    padding: 11rem 0 7rem 0;
+    background-color: var(--color-bg-light);
+    border-bottom: 1px solid var(--color-border-dark);
+    text-align: center;
+    overflow: hidden;
+}
+
+.subpage-hero-title {
+    font-size: 3.8rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+    color: var(--color-text-light);
+}
+
+.subpage-hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: var(--font-heading);
+}
+
+.contact-detailed-section {
+    padding: var(--section-padding-large);
+    background-color: var(--color-bg-dark);
+    position: relative;
+}
+
+/* Custom Operating Hours styling */
+.hours-box {
+    margin-top: 3rem;
+    background-color: var(--color-bg-light);
+    border: 1px solid var(--color-border-dark);
+    padding: 2rem;
+    border-radius: var(--border-radius-custom-md);
+    width: 100%;
+}
+
+.hours-title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-accent);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.hours-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.hours-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+}
+
+.hours-row strong {
+    color: var(--color-text-light);
+}
+
+/* Map Embed Container styling */
+.map-section {
+    padding: 0 0 var(--section-padding-large) 0;
+    background-color: var(--color-bg-dark);
+}
+
+.map-wrapper {
+    width: 100%;
+    height: 450px;
+    border-radius: var(--border-radius-custom-lg);
+    overflow: hidden;
+    border: 1px solid var(--color-border-dark);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+}
+
+.map-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-bg-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--color-text-muted);
+}
+
+@media (max-width: 1024px) {
+    .subpage-hero {
+        padding: 9rem 0 5rem 0;
+    }
+    .subpage-hero-title {
+        font-size: 3rem;
+    }
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+    .map-wrapper {
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .subpage-hero-title {
+        font-size: 2.4rem;
+    }
+}
+</style>
+
+<!-- 5. Subpage Hero Header -->
+<section class="subpage-hero">
+    <div class="outline-text" style="top: 10%; left: 50%; transform: translateX(-50%); font-size: 12vw; opacity: 0.6;">CONNECT</div>
+    <div class="container" style="position: relative; z-index: 2;">
+        <span class="subpage-hero-subtitle">Get In Touch</span>
+        <h1 class="subpage-hero-title">Contact Us</h1>
+    </div>
+</section>
+
+<!-- 6. Contact Information & Form Section -->
+<section class="contact-detailed-section">
     <div class="container">
         <div class="contact-grid grid-2">
-            <!-- Left Side: General Info & Addresses -->
+            
+            <!-- Left Column: Contact info & Hours -->
             <div class="contact-info-pane">
-                <span class="section-tagline">GET IN TOUCH</span>
-                <h2 class="section-title">Ready To Find Your Edge?</h2>
+                <span class="section-tagline">Find Your Edge</span>
+                <h2 class="section-title">Ready To Connect?</h2>
                 <p class="contact-desc">
-                    Connect with our luxury estate brokers and smart investment analysts today. Fill out the form, or reach us directly at our regional offices.
+                    Connect with our luxury estate brokers and smart investment analysts today. Reach us directly at our headquarters or submit your inquiry online.
                 </p>
 
-                <!-- Contact items -->
                 <div class="contact-items-list">
                     <!-- Phone -->
                     <div class="contact-item-box">
@@ -64,9 +208,30 @@ if (empty($contactProjects)) {
                         </div>
                     </div>
                 </div>
+
+                <!-- Operating Hours -->
+                <div class="hours-box">
+                    <h3 class="hours-title">
+                        <i data-lucide="clock"></i> Office Hours
+                    </h3>
+                    <div class="hours-list">
+                        <div class="hours-row">
+                            <span>Monday - Friday</span>
+                            <strong>9:00 AM - 7:00 PM</strong>
+                        </div>
+                        <div class="hours-row">
+                            <span>Saturday</span>
+                            <strong>10:00 AM - 5:00 PM</strong>
+                        </div>
+                        <div class="hours-row">
+                            <span>Sunday</span>
+                            <strong>Closed (By Appointment)</strong>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Right Side: Premium Contact / Inquiry Form -->
+            <!-- Right Column: Form Card -->
             <div class="contact-form-pane">
                 <div class="contact-form-card">
                     <h3 class="form-title">Investment Inquiry</h3>
@@ -122,6 +287,21 @@ if (empty($contactProjects)) {
                         </button>
                     </form>
                 </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- 7. Map Embed Section -->
+<section class="map-section">
+    <div class="container">
+        <div class="map-wrapper">
+            <!-- Modern dark map placeholder or styled layout, maps can be embedded using an iframe if preferred -->
+            <div class="map-placeholder">
+                <i data-lucide="map" style="width: 48px; height: 48px; color: var(--color-accent);"></i>
+                <h4 style="font-family: var(--font-heading); font-weight: 700; color: var(--color-text-light);">Our Headquarters Location</h4>
+                <p style="font-size: 0.9rem; text-align: center; max-width: 320px;"><?php echo htmlspecialchars(env('CONTACT_ADDRESS', 'Sector 15, Green Corridor, Phase 1')); ?></p>
             </div>
         </div>
     </div>
@@ -179,3 +359,8 @@ $(document).ready(function() {
     });
 });
 </script>
+
+<?php
+// 8. Load Footer
+require_once __DIR__ . '/includes/footer.php';
+?>
