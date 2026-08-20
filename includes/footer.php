@@ -94,8 +94,8 @@
             <div class="container footer-bottom-container">
                 <p>&copy; <?php echo date('Y'); ?> <?php echo htmlspecialchars(env('APP_NAME', 'Property Station')); ?>. All rights reserved.</p>
                 <div class="footer-bottom-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
+                    <a href="privacy-policy.php">Privacy Policy</a>
+                    <a href="terms.php">Terms of Service</a>
                 </div>
             </div>
         </div>
